@@ -18,3 +18,9 @@ display: block; // 100% 공간 차지함
 display: inline-block; // 컨텐츠 공간만 차지하고 text-aline :center까지 적용됨
 display: inline; //width와 height 무시. 
 높이나 너비를 주고싶으면 inline-block으로 해야함
+
+/* 1-6강 */
+body의 기본 마진 8px이 들어있는 이유?
+브라우저마다 기본 css가 있음. 없애면 된다.
+주의해야할 점 : 파일확장자와 숨김항목을 미리 켜놓고 있어야 한다.
+id가 겹치지 않도록 주의
