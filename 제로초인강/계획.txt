@@ -11,3 +11,10 @@ flex, grid, 반응형 구현.
 /* 1-4강: favicon 똑같이 만들기 */
 href="/favicon.ico?1" //여기서 "/"부분은 네이버 프로젝트 폴더가 된다.
 href="./favicon.ico?1" // 경로 앞에 .이 있을 경우 현재 파일이 있는 폴더 안에 들어있는 favicon 접근
+
+/* 1-5강 */
+id : 공유 불가하다.
+display: block; // 100% 공간 차지함
+display: inline-block; // 컨텐츠 공간만 차지하고 text-aline :center까지 적용됨
+display: inline; //width와 height 무시. 
+높이나 너비를 주고싶으면 inline-block으로 해야함
