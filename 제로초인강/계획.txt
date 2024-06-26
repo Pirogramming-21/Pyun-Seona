@@ -33,3 +33,15 @@ id가 겹치지 않도록 주의
 
 무한히 연결되어있으므로 background-repeat : no-repeat; 사용하여라
 이미지스프라이트의 사이즈를 정해놓고 해야 position을 결정할 수 있다.
+
+/* 1-8강 */
+1. header-hamburger를 button 속성으로 변경하고
+background: none; border: none;으로 초기화
+cursor: pointer;로 커서 적용
+
+2. 패딩과 마진의 차이
+마진은 바깥요소여서 버튼클릭이 불가. 
+요소에 포함되게 만들고 싶으면 패딩, 제외하고싶으면 마진 사용
+border까진 자신의 사이즈, Margin은 바깥부분이다.
+
+3. header-hamburger에 hover기능 구현하기
