@@ -85,3 +85,7 @@ flex:1 일경우 남는공간에 한해 늘어날 수 있는 만큼 최대한 �
 단, 부모가 display flex여야함
 
 inline flex 사용법 및 #search-keybord, #search-recent, #search-button 속성 투명하게 변경
+
+/* 2-3강 */
+hover시 변경되는 기능 구현
+마우스를 올렸을때 검색창 그림자 지는 것 구현.
