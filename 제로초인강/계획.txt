@@ -57,3 +57,9 @@ relative와 absolute만 사용할 예정
 /* 1-10강 */
 z-index : 부모-자식간 불가. 형제끼리만 가능, position: static;이면 적용 불가
 display:none; 일 경우 시각장애인들이 사용하기 힘들다. 그러므로 blind영역을 만들어 둠
+
+/* 1-11강 */
+페이, 알림 아이콘 추가하기
+box-sizing: border-box;로 하면 좋은 점
+width가 padding과 border너비까지 포함한다.(margin 제외)
+border까지를 width로 두는 코드
