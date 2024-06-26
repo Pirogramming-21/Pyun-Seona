@@ -89,3 +89,6 @@ inline flex 사용법 및 #search-keybord, #search-recent, #search-button 속성
 /* 2-3강 */
 hover시 변경되는 기능 구현
 마우스를 올렸을때 검색창 그림자 지는 것 구현.
+
+/* 2-4강 */
+focus-within: 자식태그중에 focus된 것이 있으면 그때 활성화된다.
