@@ -105,6 +105,9 @@ li 정렬하고 세팅하기. 이미지 추가
 
 /* 3-1강 */
 전체적인 body 디자인. 새로 배운 문법
-                aside[id$=ad]{
-                    border-radius:8px;
-                }
+    aside[id$=ad]{
+        border-radius:8px;
+    }
+
+/* 3-2강 */
+로그인 만들기
