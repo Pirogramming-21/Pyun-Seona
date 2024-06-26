@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    letter-spacing: -0.4px;
+    font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
+    height: 100%;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#wrap {
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+    position: relative; 
+}
+
+.first-background {
+    background-color: #2B3137;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+}
+
+#wrap-center {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+#nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+#nav-left, #nav-right {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-left li, #nav-right li {
+    margin-right: 20px;
+}
+
+#nav-left a, #nav-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#nav-right input[type="text"] {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: #f0f3f4;
+    font-size: 14px;
+    outline: none; 
+}
+
+#nav-right input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#nav-right input[type="text"]:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    height: 30px;
+    width: auto;
+    background-color: #FFFFFF;
+}
+
+#login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+    width: 100%;
+}
+
+#github-signup {
+    max-width: 600px;
+}
+
+#github-signup h1 {
+    text-align: left;
+    color:#F0F3F4;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#github-signup p {
+    text-align: left;
+    color:#C9D1D9;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+#github-signup .effect {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #FFFFFF; /* 강조된 텍스트 색상 */
+    display: inline;
+}
+
+#main-form {
+    background-color: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 400px;
+}
+
+#main-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+#main-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#main-form input[type="text"],
+#main-form input[type="email"],
+#main-form input[type="password"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#password-hint {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+#main-form {
+    background-color: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 400px;
+    text-align: left;
+}
+
+/* 기본 스타일 :원래 하얀색이었다가 포커스 시 하늘색으로 바뀜*/
+#main-form input[type="text"],
+#main-form input[type="email"],
+#main-form input[type="password"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+}
+
+/* 포커스 시 스타일 */
+#main-form input[type="text"]:focus,
+#main-form input[type="email"]:focus,
+#main-form input[type="password"]:focus {
+    background-color: #e6f0ff; 
+    border-color: #80bdff;
+    outline: none;
+}
+
+#main-form form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#main-form button{
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#main-form button:hover {
+    background-color: #218838;
+}
+#note1 a, #note2 a{
+    text-decoration: none;
+    color: #58a6ff; 
+    font-weight: bold; 
+}
+#bottom-sentence {
+    font-size: 12px;
+    color: #666;
+    margin-top: 15px;
+}
+
+#footer_last {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.footer_last-img {
+    width: 50%;
+    height: auto;
+    position: absolute;
+}
