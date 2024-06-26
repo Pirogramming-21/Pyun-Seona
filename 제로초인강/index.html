@@ -190,7 +190,7 @@
             </div>
             <style>
                 #search > form{
-                    display: inline-block;
+                    display: inline-flex;
                     width: 708px;
                     height: 60px;
                     border: 1px solid #03c75a;
@@ -219,7 +219,9 @@
                     fill:#03c75a;
                 }
                 #search-svg{
-                    display: inline-block;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
                     width: 68px;
                     margin-right: 12px;
                     height: 100%;
@@ -239,8 +241,18 @@
                     outline: none;
                 }
                 #search-right {
-                    display: inline-block;
+                    flex: 1;
+                    display: flex;
+                    align-items: stretch;
+                    justify-content: flex-end;
                 }
+
+                #search-keybord, #search-recent, #search-button{
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
+                
                 #search-keybord::before{
                     content: "";
                     display: block;

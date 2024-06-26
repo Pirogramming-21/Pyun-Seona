@@ -78,3 +78,10 @@ display: inline-block의 단점 : 엔터를 칠때마다 불필요한 공간 생
 => display: flex;로 해결
 
 vertical-align 정렬시 사용
+
+/* 2-2강 */
+flex:1 일경우 남는공간에 한해 늘어날 수 있는 만큼 최대한 늘어남
+형제끼리는 숫자를 부여할 경우 비율이 맞춰짐
+단, 부모가 display flex여야함
+
+inline flex 사용법 및 #search-keybord, #search-recent, #search-button 속성 투명하게 변경
