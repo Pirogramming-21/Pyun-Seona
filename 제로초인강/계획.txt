@@ -128,3 +128,5 @@ header와 footer 구현
                     overflow: hidden;
                 }
 뉴스 윗부분 구현완료
+
+/* 3-6강 */
