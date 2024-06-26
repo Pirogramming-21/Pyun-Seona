@@ -63,3 +63,11 @@ display:none; 일 경우 시각장애인들이 사용하기 힘들다. 그러므
 box-sizing: border-box;로 하면 좋은 점
 width가 padding과 border너비까지 포함한다.(margin 제외)
 border까지를 width로 두는 코드
+
+공통부분은 모아서 위로 보내는 작업 완료
+
+/* 1-12강 */
+search 검색창 부분 만들기
+**강의 내 숙제 : html에서 style을 body에 넣으면 안되는 이유?
+동작은 하지만 HTML 표준은 아니다. 렌더링 되기전에 읽어와야 하는데 이후 추가되면 이슈가 생길 가능성 있음
+form 사용, svg로 로고 불러오기
