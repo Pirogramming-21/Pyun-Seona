@@ -71,3 +71,10 @@ search 검색창 부분 만들기
 **강의 내 숙제 : html에서 style을 body에 넣으면 안되는 이유?
 동작은 하지만 HTML 표준은 아니다. 렌더링 되기전에 읽어와야 하는데 이후 추가되면 이슈가 생길 가능성 있음
 form 사용, svg로 로고 불러오기
+
+/* 2-1강 */
+검색창 모양을 똑같이 구현하기
+display: inline-block의 단점 : 엔터를 칠때마다 불필요한 공간 생김
+=> display: flex;로 해결
+
+vertical-align 정렬시 사용
