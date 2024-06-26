@@ -53,3 +53,7 @@ position:absolute; 기준점이 전체 화면. 부모 중 position: static;이 �
 position: fixed; 스크롤 내려도 고정
 position: sticky; 처음엔 absolute처럼 있다가 어느정도 스크롤을 내리면 fixed처럼 동작
 relative와 absolute만 사용할 예정
+
+/* 1-10강 */
+z-index : 부모-자식간 불가. 형제끼리만 가능, position: static;이면 적용 불가
+display:none; 일 경우 시각장애인들이 사용하기 힘들다. 그러므로 blind영역을 만들어 둠
