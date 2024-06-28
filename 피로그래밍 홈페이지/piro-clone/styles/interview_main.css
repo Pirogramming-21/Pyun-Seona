@@ -1,26 +1,27 @@
-body{
+body {
     background-color: black;
     color: white;
 }
 main {
     min-height: 100vh;
     background-color: black;
-    
-
+    display: flex; 
+    justify-content: center; 
+    padding-top: var(--header-height);
 }
 
-.main-header--container > ul{
+.main-header--container > ul {
     display: flex;
-    font-size:1.8rem;
+    font-size: 1.8rem;
     gap: 2rem;
-    
 }
-.main-header--container > ul > li:hover{
+
+.main-header--container > ul > li:hover {
     transform: scale(1.01) translateY(-10px);
     transition: transform 0.3s ease;
 }
 
-.main-header--container > ul > li:nth-child(2) {
+.main-header--container > ul > li:nth-child(4) {
     color: var(--green);
 }
 
@@ -33,8 +34,8 @@ main {
     justify-content: center;
     align-items: center;
     height: var(--header-height);
-    background-color: black; /* 배경색 추가 */
-    z-index: 10; /* 다른 요소들 위에 위치하게 함 */
+    background-color: black;
+    z-index: 10;
 }
 
 .main-header--container {
@@ -44,22 +45,39 @@ main {
     align-items: center;
     padding: 0 40px;
 }
+
 #grid-container {
-    padding: 0 40px;
-    margin-top: var(--header-height);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(7, auto);
     gap: 20px;
     padding: 20px;
+    margin-top: calc(var(--header-height) + 20px);
 }
 
 .grid-item {
     background-color: #333333;
-    padding: 20px;
     border-radius: 10px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
 }
+
+.grid-item:hover{
+    transition: transform 0.3s ease;
+    transform: scale(1.05);
+}
+
+.grid-item:hover .img-container img{
+    transition: transform 0.3s ease;
+    transform: scale(1.2);
+}
+
 
 .main-title {
     display: flex;
@@ -67,11 +85,11 @@ main {
 }
 
 .img-container {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     overflow: hidden;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .img-container img {
@@ -80,40 +98,41 @@ main {
 }
 
 h1 {
-    font-size: 1.2em;
-    margin: 0;
+    font-size: 2em;
+    padding-bottom: 10px;
 }
 
 .badge {
     background-color: #FF4500;
     color: white;
-    padding: 2px 5px;
+    padding: 8px 10px;
     border-radius: 5px;
-    font-size: 0.8em;
+    font-size: 1.5em;
     margin-top: 5px;
 }
 
 .description {
-    margin-top: 10px;
-    font-size: 1em;
+    font-size: 1.8em;
+    text-align: left;
+    margin-top: 10px; 
 }
-       
+
 .hamburger-icon {
     display: flex;
     flex-direction: column;
     width: 20px;
     height: 15px;
     justify-content: space-between;
-    position: absolute; /* 위치 설정을 위해 추가 */
-    top: 20px; /* 위에서부터의 위치 조정 */
-    right: 30px; /* 오른쪽에서부터의 위치 조정 */
-    z-index: 1; /* 다른 요소들보다 위에 위치 */
-    cursor: pointer; 
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
 }
 
 .hamburger-icon > input[type="checkbox"] {
     display: none;
 }
+
 
 .hamburger-icon > div {
     height: 2px;
@@ -121,49 +140,128 @@ h1 {
     transition: 0.3s;
 }
 
-/* 호버 시 아이콘 변형 */
 .hamburger-icon:hover > div:nth-of-type(1) {
-margin-right: auto;
-width: 10px;
+    margin-right: auto;
+    width: 10px;
 }
 
 .hamburger-icon:hover > div:nth-of-type(3) {
-margin-left: auto;
-width: 10px;
+    margin-left: auto;
+    width: 10px;
+}
 
+/* footer CSS */
+footer {
+    background-color: #333333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    margin-top: auto; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(100%, 1200px);
+    height: min(100%, 200px);
+    padding: 0 40px;
+}
+
+.footer-content .socials {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.footer-content .socials div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-content .links {
+    display: flex;
+    gap: 20px;
+    font-size: 2rem;
+}
+
+.footer-content .links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    text-align: center;
+    background-color: #292929;
+    padding-top: 20px;
+}
+
+.socials > div:hover {
+    transform: scale(1.01) translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+.links > a:hover {
+    transform: scale(1.01) translateY(-5px);
+    transition: transform 0.3s ease;
 }
 
 
-    /*미디어쿼리*/ 일단 port_main 복붙한 코드. 좀만 고치면 됨!
-    @media screen and (max-width: 580px) {
-        .links > a{display: none;}
+/* 화면 크기가 1200px 미만일 때 2열 */
+@media screen and (max-width: 1200px) {
+    #grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 화면 크기가 800px 미만일 때 1열 */
+@media screen and (max-width: 800px) {
+    #grid-container {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* 화면 크기가 768px 미만일 때 hamburger메뉴 띄우기(기존코드와 동일)*/
+@media screen and (max-width: 768px) {
+    .main-header--container > ul {
+      display: none;
+    }
+    .sidebar {
+        width: 300px;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--gray);
+        position: fixed;
+        right: -300px;
+        top: var(--header-height);
+        transition: 0.3s;
+      }
+      #hamburger-icon > input[type="checkbox"]:checked ~ .sidebar {
+        right: 0;
+      }
+    }
+    @media screen and (min-width: 769px) {
+      #hamburger-icon {
+        display: none;
+      }
     }
 
-    @media screen and (max-width: 700px) {
-        #port_main .main-title {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-    
-        #port_main .main-title .img-container {
-            margin-bottom: 20px;
-            margin-right: 0;
-        }
-    
-        #port_main .project_team {
-            justify-content: center;
-
-        }
-        .port_img{
-            flex-direction: column;
-        }
-        .footer-content{
-            flex-direction: column;
-            padding: 60px;
-        }
-        footer{
-            margin-top: 20px;
-            height: auto;
-        }
+@media screen and (max-width: 700px) {
+    .links > a{display: none;}
+    .footer-content{
+        flex-direction: column;
+        padding: 60px;
     }
+    footer{
+        margin-top: 20px;
+        height: auto;
+    }
+}
