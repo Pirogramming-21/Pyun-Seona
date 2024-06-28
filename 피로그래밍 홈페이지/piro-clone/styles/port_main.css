@@ -17,8 +17,8 @@ main {
     justify-content: center;
     align-items: center;
     height: var(--header-height);
-    background-color: black; /* 배경색 추가 */
-    z-index: 10; /* 다른 요소들 위에 위치하게 함 */
+    background-color: black; 
+    z-index: 10;
 }
 
 .main-header--container {
@@ -29,17 +29,15 @@ main {
     padding: 0 40px;
 }
 
-/* 페이지 콘텐츠가 헤더 아래에서 시작하도록 마진 추가 */
 #port_main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding: 0 40px;
-    margin-top: var(--header-height); /* 헤더 높이만큼 마진 추가 */
+    margin-top: var(--header-height); 
 }
 
-/* 다른 기존 CSS */
 
 .main-header--container > ul{
     display: flex;
@@ -56,15 +54,6 @@ main {
     color: var(--green);
 }
 
-#port_main .port_main-term {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    align-self: center; /* port_main을 기준으로 가운데 정렬 */
-}
-
-      /* port_img를 세로 정렬 */
     #port_main .port_img {
         background-color: #333333;
         display: flex;
@@ -226,7 +215,7 @@ main {
             color: white;
             font-size: 1.2em;
             border-radius: 20px;
-            position: relative; /* 자식 요소의 위치 설정을 위한 relative 추가 */
+            position: relative; 
         }
         
         .hamburger-icon {
@@ -235,10 +224,10 @@ main {
             width: 30px;
             height: 25px;
             justify-content: space-between;
-            position: absolute; /* 위치 설정을 위해 추가 */
-            top: 20px; /* 위에서부터의 위치 조정 */
-            right: 30px; /* 오른쪽에서부터의 위치 조정 */
-            z-index: 1; /* 다른 요소들보다 위에 위치 */
+            position: absolute;
+            top: 20px; 
+            right: 30px;
+            z-index: 1; 
             cursor: pointer; 
         }
         
@@ -265,7 +254,7 @@ main {
 }
 
 #port_main .main-title {
-    position: relative; /* 자식 요소의 위치 설정을 위한 relative 추가 */
+    position: relative; 
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -274,7 +263,7 @@ main {
 }
 
 #port_main .main-title {
-    position: relative; /* 자식 요소의 위치 설정을 위한 relative 추가 */
+    position: relative; 
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -292,7 +281,7 @@ main {
         
         
         #port_main .main-title {
-            position: relative; /* 자식 요소의 위치 설정을 위한 relative 추가 */
+            position: relative; 
             display: flex;
             flex-direction: row;
             align-items: center;
