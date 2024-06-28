@@ -214,7 +214,7 @@ footer {
     transform: scale(1.01) translateY(-5px);
     transition: transform 0.3s ease;
 }
-
+/*커밋 된건지 확인 1트*/
 
 /* 화면 크기가 1200px 미만일 때 2열 */
 @media screen and (max-width: 1200px) {
