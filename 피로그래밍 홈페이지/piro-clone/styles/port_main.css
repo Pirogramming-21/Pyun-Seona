@@ -1,0 +1,335 @@
+body{
+    background-color: black;
+    color: white;
+}
+main {
+    min-height: 100vh;
+    background-color: black;
+
+}
+
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--header-height);
+    background-color: black; /* 배경색 추가 */
+    z-index: 10; /* 다른 요소들 위에 위치하게 함 */
+}
+
+.main-header--container {
+    width: min(100%, 1200px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+/* 페이지 콘텐츠가 헤더 아래에서 시작하도록 마진 추가 */
+#port_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 40px;
+    margin-top: var(--header-height); /* 헤더 높이만큼 마진 추가 */
+}
+
+/* 다른 기존 CSS */
+
+.main-header--container > ul{
+    display: flex;
+    font-size:1.8rem;
+    gap: 2rem;
+    
+}
+.main-header--container > ul > li:hover{
+    transform: scale(1.01) translateY(-10px);
+    transition: transform 0.3s ease;
+}
+
+.main-header--container > ul > li:nth-child(3) {
+    color: var(--green);
+}
+
+#port_main .port_main-term {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    align-self: center; /* port_main을 기준으로 가운데 정렬 */
+}
+
+      /* port_img를 세로 정렬 */
+    #port_main .port_img {
+        background-color: #333333;
+        display: flex;
+        align-items: center;
+        width: min(100%, 1200px);
+        
+        margin: 10px 0; 
+        padding: 10px; 
+        color: white; 
+        font-size: 1.2em; 
+        border-radius: 20px;
+        position: relative;
+    }
+
+    #port_main .main-title {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 20px;
+        color: white;
+    }
+
+    #port_main .main-title .img-container {
+        width: 150px;
+        height: 110px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        background-color: white;
+        border-radius: 20px;
+    }
+
+    #port_main .main-title img {
+        width: 70%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+    .port_img:hover{
+        transition: transform 0.3s ease;
+        transform: scale(1.05);
+    }
+    #port_main .main-title:hover img {
+        transform: scale(1.2);
+    }
+
+    #port_main .main-title h1,
+    #port_main .main-title .project_minititle {
+        margin: 0;
+    }
+    #port_main .main-title h1{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    }
+    #port_main .main-title .project_minititle{
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    #port_main .project_team {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    #port_main .project_team .team_member {
+        background-color: #777;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1em;
+        flex-wrap: wrap;
+    }
+
+    #port_main .project_team .team_leader {
+        background-color: #1E90FF;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1em;
+        
+
+    }
+
+    /* footer CSS */
+        footer {
+            background-color: #333333;
+            color: white;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: min(100%, 1200px);
+            height: min(100%, 200px);
+            padding: 0 40px;
+        }
+
+        .footer-content .socials {
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-content .socials div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-content .links {
+            display: flex;
+            gap: 20px;
+            font-size: 2rem;
+        }
+
+        .footer-content .links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            height: 80px;
+            margin-top: 10px;
+            text-align: center;
+            background-color: #292929;
+            padding-top: 20px;
+        }
+
+        .socials > div:hover{
+            transform: scale(1.01) translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        .links > a:hover{
+            transform: scale(1.01) translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        
+        .port_img {
+            background-color: #333333;
+            display: flex;
+            align-items: center;
+            width: min(100%, 1200px);
+            margin: 10px 0;
+            padding: 10px;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 20px;
+            position: relative; /* 자식 요소의 위치 설정을 위한 relative 추가 */
+        }
+        
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            width: 30px;
+            height: 25px;
+            justify-content: space-between;
+            position: absolute; /* 위치 설정을 위해 추가 */
+            top: 20px; /* 위에서부터의 위치 조정 */
+            right: 30px; /* 오른쪽에서부터의 위치 조정 */
+            z-index: 1; /* 다른 요소들보다 위에 위치 */
+            cursor: pointer; 
+        }
+        
+        .hamburger-icon > input[type="checkbox"] {
+            display: none;
+        }
+        
+        .hamburger-icon > div {
+            height: 3px;
+            background-color: #777;
+            transition: 0.3s;
+        }
+        
+/* 호버 시 아이콘 변형 */
+.hamburger-icon:hover > div:nth-of-type(1) {
+    margin-right: auto;
+    width: 20px;
+}
+
+.hamburger-icon:hover > div:nth-of-type(3) {
+    margin-left: auto;
+    width: 20px;
+    
+}
+
+#port_main .main-title {
+    position: relative; /* 자식 요소의 위치 설정을 위한 relative 추가 */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20px;
+    color: white;
+}
+
+#port_main .main-title {
+    position: relative; /* 자식 요소의 위치 설정을 위한 relative 추가 */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20px;
+    color: white;
+}
+
+        #port_main .main-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-right: 20px;
+            color: white;
+        }
+        
+        
+        #port_main .main-title {
+            position: relative; /* 자식 요소의 위치 설정을 위한 relative 추가 */
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-right: 20px;
+            color: white;
+        }
+        
+    /*미디어쿼리*/
+    @media screen and (max-width: 580px) {
+        .links > a{display: none;}
+    }
+
+    @media screen and (max-width: 700px) {
+        #port_main .main-title {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    
+        #port_main .main-title .img-container {
+            margin-bottom: 20px;
+            margin-right: 0;
+        }
+    
+        #port_main .project_team {
+            justify-content: center;
+
+        }
+        .port_img{
+            flex-direction: column;
+        }
+        .footer-content{
+            flex-direction: column;
+            padding: 60px;
+        }
+        footer{
+            margin-top: 20px;
+            height: auto;
+        }
+    }

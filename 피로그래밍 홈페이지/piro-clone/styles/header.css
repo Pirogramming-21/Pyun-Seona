@@ -4,7 +4,7 @@ body{
 }
 main {
     min-height: 100vh;
-    background-color: gray;
+    background-color: black;
 
 }
 
@@ -17,6 +17,7 @@ main {
 }
 
 .main-header--container {
+    
     width: min(100%, 1200px);
     display: flex;
     justify-content: space-between;
@@ -24,6 +25,7 @@ main {
     padding: 0 40px;
 }
 .main-header--container > ul{
+    
     display: flex;
     font-size:1.8rem;
     gap: 2rem;
