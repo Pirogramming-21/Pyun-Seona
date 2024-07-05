@@ -29,3 +29,26 @@
 - 시간은 00:00:00으로 초기화되고, 모든 구간 기록도 삭제된다.
 
 ## 기능구현 2: 기록추가
+
+<img width="553" alt="스크린샷 2024-07-06 오전 12 08 08" src="https://github.com/Pirogramming-21/Pyun-Seona/assets/139514905/f41a9f4e-71b0-43c3-8269-bc0a3f6d26e5">
+
+- 스톱워치에 stop 버튼을 누를때마다 구간 기록을 저쟝할 수 있도록 Javascript에 recordLap() 함수를 구현하였고 기록된 구간 시간은 목록 맨 위에 추가된다.
+
+## 기능구현 3: 전체 삭제
+
+<img width="495" alt="스크린샷 2024-07-06 오전 12 10 42" src="https://github.com/Pirogramming-21/Pyun-Seona/assets/139514905/e0ad06d6-14b1-42de-9053-4adc7242f494">
+
+<img width="455" alt="스크린샷 2024-07-06 오전 12 11 56" src="https://github.com/Pirogramming-21/Pyun-Seona/assets/139514905/1609f88e-7599-455c-8bae-6f4f67dcffa4">
+
+- 선택한 구간 기록 없이 빨간 네모 부분의 아이콘을 클릭할 경우 구간기록이 전부 삭제가 된다.
+- 해당 아이콘을 deleteIcon으로 가져오고 deleteIcon.onclick 메서드를 사용하여 만약 checkedItems.length === 0일 경우(선택된 항목이 없음을 의미) innerHTML = ''; 속성으로 구간 기록을 없애는 코드를 작성하였다.
+
+## 기능구현 4: 선택 삭제
+
+<img width="507" alt="스크린샷 2024-07-06 오전 12 16 31" src="https://github.com/Pirogramming-21/Pyun-Seona/assets/139514905/e18907a2-428b-415c-bf36-70f5e6f32812">
+
+<img width="468" alt="스크린샷 2024-07-06 오전 12 17 20" src="https://github.com/Pirogramming-21/Pyun-Seona/assets/139514905/e9373720-c0af-4d8d-b4d7-7f496bc677e9">
+
+- 선택 전 아이콘(구간기록 시 기본 생성 아이콘), 선택 시 아이콘을 다르게 표기하였으며 사용한 아이콘은 remixicon에서 얻어왔다.
+
+- 선택 후 삭제버튼을 누르면 해당 부분만 삭제가 된다. 이는 deleteIcon.onclick 시에 else문에 forEach문을 사용해 체크박스 아이콘의 부모요소, 즉 구간 기록을 나타내는 li 요소를 삭제하는 방식으로 구현하였다.
