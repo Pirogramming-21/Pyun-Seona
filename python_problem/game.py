@@ -1,3 +1,5 @@
+import random
+
 num = 0
 
 def get_input():
@@ -18,16 +20,25 @@ def player_turn(player_name, current_num):
         print(f"{player_name} : {current_num}")
     return current_num
 
+#컴퓨터 차례(9단계)
+def computer_turn(current_num):
+    count = random.randint(1,3)
+    for i in range(1, count+1):
+        current_num += 1
+        print(f"computer: {current_num}")
+        if current_num >= 31:
+            return current_num
+    return current_num
+
 def brGame():
     num = 0
     while num < 31:
-        num = player_turn("Player A", num)
+        num = computer_turn(num)
         if num >= 31:
-            print("playerB win!")
+            print("Player wins!")
             break
-        num = player_turn("Player B", num)
+        num = player_turn("Player", num)
         if num >= 31:
-            print("playerA win!")
+            print("computer win!")
             break
-
 brGame()
