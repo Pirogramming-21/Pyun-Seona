@@ -18,5 +18,10 @@ def player_turn(player_name, current_num):
         print(f"{player_name} : {current_num}")
     return current_num
 
-player_name = "playerA"
-num = player_turn(player_name, num)
+def br31_game():
+    num = 0
+    while num < 31:
+        num = player_turn("Player A", num)
+        num = player_turn("Player B", num)
+
+br31_game()
