@@ -25,6 +25,12 @@ def br31_game():
     num = 0
     while num < 31:
         num = player_turn("Player A", num)
+        if num >= 31:
+            print("playerB win!")
+            break
         num = player_turn("Player B", num)
+        if num >= 31:
+            print("playerA win!")
+            break
 
 br31_game()
