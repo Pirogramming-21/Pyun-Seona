@@ -18,10 +18,7 @@ def player_turn(player_name, current_num):
         print(f"{player_name} : {current_num}")
     return current_num
 
-#6단계 완료
-
-
-def br31_game():
+def brGame():
     num = 0
     while num < 31:
         num = player_turn("Player A", num)
@@ -33,4 +30,4 @@ def br31_game():
             print("playerA win!")
             break
 
-br31_game()
+brGame()
