@@ -14,4 +14,4 @@
 
 <img width="472" alt="스크린샷 2024-07-05 오후 11 28 02" src="https://github.com/Pirogramming-21/Pyun-Seona/assets/139514905/8bed6b5c-4491-42ad-9a2c-bb6f2e9aebcc">
 
-- 3가지 섹션(minutes, seconds, tenMillis)으로 나누어
+- 3가지 섹션(minutes, seconds, tenMillis)으로 나누어 구현.
