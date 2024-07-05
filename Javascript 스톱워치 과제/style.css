@@ -76,6 +76,24 @@ button:hover {
     align-items: center;
 }
 
+.lap_container h3 span {
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+#selectAll {
+    margin-right: 5px;
+}
+
+.lap_item {
+    display: flex;
+    align-items: center;
+}
+
+.lap_item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
 .ri-file-reduce-fill {
     cursor: pointer;
 }
