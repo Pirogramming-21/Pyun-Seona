@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: normal;
+            text-align: left;
+            padding-left: 2rem;
+        }
+        header a {
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .review-form {
+            background-color: #f9f9f9;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .review-form h2 {
+            margin: 0 0 20px;
+            text-align: center;
+            color: #e50914;
+        }
+        .review-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .review-form input[type="text"],
+        .review-form input[type="number"],
+        .review-form input[type="url"],
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .review-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .review-form button:hover {
+            background-color: #d40813;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>my <span style="color: #e50914;">Movie</span> reviews</h1>
+        <a href="{% url 'review_list' %}">Back to List</a>
+    </header>
+    <div class="container">
+        <div class="review-form">
+            <h2>Movie review</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="year_release">Year Release:</label>
+                    <input type="number" id="year_release" name="year_release" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Genre:</label>
+                    <input type="text" id="genre" name="genre" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="scope">Scope:</label>
+                    <input type="number" step="0.1" id="scope" name="scope" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="running_time">Running Time:</label>
+                    <input type="number" step="0.1" id="running_time" name="running_time" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Review Content:</label>
+                    <textarea id="content" name="content" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="director">Director:</label>
+                    <input type="text" id="director" name="director" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="actor">Actor:</label>
+                    <input type="text" id="actor" name="actor" class="form-control" required>
+                </div>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

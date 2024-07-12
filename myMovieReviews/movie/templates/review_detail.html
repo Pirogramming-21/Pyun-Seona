@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Review Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: normal;
+            text-align: left;
+            padding-left: 2rem;
+        }
+        header a {
+            text-decoration: none;
+            color: #333;
+        }
+        header .review_2 {
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .movie-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .movie-title h2 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .movie-title a {
+            font-size: 14px;
+            color: #e50914;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .movie-details {
+            display: flex;
+            margin-top: 20px;
+        }
+        .movie-details img {
+            max-width: 200px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .movie-info {
+            flex: 1;
+        }
+        .movie-info p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .review-content {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .edit-delete-links {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .edit-delete-links form {
+            display: inline;
+        }
+        .edit-delete-links a, .edit-delete-links button {
+            margin-left: 10px;
+            color: #e50914;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .edit-delete-links button:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'review_list' %}"><h1>my <span style="color: #e50914;">Movie</span> reviews</h1></a>
+        <a href="{% url 'review_list' %}" class="review_2">Back to List</a>
+    </header>
+    <div class="container">
+        <div class="movie-title">
+            <h2>{{ review.title }}</h2>
+            <div class="edit-delete-links">
+                <a href="{% url 'review_update' review.id %}">수정</a>
+                <form method="post" action="{% url 'review_delete' review.id %}">
+                    {% csrf_token %}
+                    <button type="submit">삭제</button>
+                </form>
+            </div>
+        </div>
+        <div class="movie-details">
+            <img src="https://upload.wikimedia.org/wikipedia/ko/4/47/%EC%8A%A4%ED%8C%8C%EC%9D%B4%EB%8D%94%EB%A7%A8_3_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?20200205064526" alt="{{ review.title }}"> 
+            <div class="movie-info">
+                <p>개봉년도: {{ review.year_release }}</p>
+                <p>감독: {{ review.director }}</p>
+                <p>주연: {{ review.actor }}</p>
+                <p>장르: {{ review.genre }}</p>
+                <p>별점: {{ review.scope }}</p>
+                <p>러닝타임: {{ review.running_time }}분</p>
+            </div>
+        </div>
+        <div class="review-content">
+            {{ review.content }}
+        </div>
+    </div>
+</body>
+</html>
+
