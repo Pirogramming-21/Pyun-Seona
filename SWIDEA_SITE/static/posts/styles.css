@@ -1,0 +1,93 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #ffffff;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+main {
+    position: relative;
+    height: 100vh; /* Viewport height */
+    width: 100vw;  /* Viewport width */
+    padding: 2rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('https://previews.123rf.com/images/cobracz/cobracz1606/cobracz160600041/58532354-%EA%B2%80%EC%9D%80-%ED%99%94%EB%A9%B4%EC%97%90-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%BD%94%EB%93%9C-%EB%85%B9%EC%83%89-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%B6%94%EC%83%81-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EA%B0%9C%EB%B0%9C-%EC%86%8C%EC%8A%A4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+main > * {
+    position: relative;
+    z-index: 2;
+    
+}
+
+.sort {
+    margin-bottom: 2rem;
+}
+
+.posts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.post {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    width: 200px;
+}
+
+.post img {
+    max-width: 100%;
+    height: auto;
+}
+
+.post h3 {
+    margin: 0.5rem 0;
+}
+
+
+
+
+

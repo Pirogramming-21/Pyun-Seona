@@ -1,0 +1,13 @@
+{% extends 'posts/base.html' %}
+
+{%block content%}
+    <h2>Idea Detail Update</h2>
+    <p>아이디어 세부 내용 수정 페이지입니다. 아이디어를 구체화하거나 내용을 변경해보세요</p>
+    <form
+        action="{% url 'idea:update' pk %}"
+        method="post"
+    >
+        {%csrf_token%} {{form.as_p}}
+        <button class="btn btn-primary">수정 완료</button>
+    </form>
+{%endblock%}

@@ -1,0 +1,95 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+
+{%block header%}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlDnwLBafLH3asdyTl_4lR4GP_KOslBICdjw&s');
+            background-size: cover;
+            color: #fff;
+        }
+        header {
+            background-color: #333;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+        .post-detail {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 600px;
+            width: 100%;
+        }
+        .post-detail img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .post-detail h2 {
+            margin-top: 1rem;
+        }
+        .post-detail p {
+            text-align: left;
+        }
+        .post-detail .buttons {
+            margin-top: 2rem;
+        }
+        .post-detail .buttons a {
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .post-detail .buttons .delete {
+            background: #e74c3c;
+        }
+        .post-detail .buttons .edit {
+            background: #3498db;
+        }
+        .post-detail .buttons .back {
+            background: #95a5a6;
+        }
+    </style>
+{%endblock header%}
+
+{%block content%}
+    <h2>Idea Detail</h2>
+    <p>아이디어 세부내용 페이지 입니다. 당신이 구현하려 한 아이디어들을 자세히 살펴보세요.</p>
+    <div class="post-detail">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        <h2>{{ post.title }}</h2>
+        <p><strong>1) 아이디어 관심도:</strong> {{ post.interest }}</p>
+        <p><strong>2) 예상 개발 툴:</strong> {{ post.devtool }}</p>
+        <p><strong>3) 아이디어 설명:</strong></p>
+        <p>{{ post.content }}</p>
+
+        <div class="buttons">
+            <a href="{% url 'idea:delete' post.pk %}" class="delete">삭제</a>
+            <a href="{% url 'idea:main' %}" class="back">목록</a>
+            <a href="{% url 'idea:update' post.pk %}" class="edit">수정</a>
+        </div>
+
+
+    </div>
+{%endblock content%}
+    
+    <
+    </main>
+</body>
+</html>

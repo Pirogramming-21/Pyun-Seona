@@ -1,0 +1,11 @@
+<!-- add_devtool.html -->
+{% extends 'posts/base.html' %}
+
+{% block content %}
+<h2>개발 툴 등록</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">등록</button>
+</form>
+{% endblock %}

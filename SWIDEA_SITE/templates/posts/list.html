@@ -1,0 +1,88 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Idea List</h2>
+<p>내 아이디어를 잊지 말고 기록해보세요</p>
+<div class="sort">
+    <label for="sort">정렬기준:</label>
+    <select id="sort" name="sort" onchange="location = this.value;">
+        <option value="?sort=찜하기순" {% if sort == '찜하기순' %}selected{% endif %}>찜하기순</option>
+        <option value="?sort=이름순" {% if sort == '이름순' %}selected{% endif %}>이름순</option>
+        <option value="?sort=등록순" {% if sort == '등록순' %}selected{% endif %}>등록순</option>
+        <option value="?sort=최신순" {% if sort == '최신순' %}selected{% endif %}>최신순</option>
+    </select>
+</div>
+<div class="posts">
+    {% for post in posts %}
+    <div class="post" data-id="{{ post.id }}">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        <a href="{% url 'idea:detail' post.pk %}"><h3>{{ post.title }}</h3></a>
+        <p>예상 개발 툴: {{ post.devtool }}</p>
+        <p>아이디어 관심도: <span class="interest">{{ post.interest }}</span></p>
+        <button class="star-btn" data-id="{{ post.id }}">
+            {% if post.ideastar_set.count > 0 %}
+            ★
+            {% else %}
+            ☆
+            {% endif %}
+        </button>
+        <div class="interest-buttons">
+            <button class="interest-btn" data-id="{{ post.id }}" data-action="increase">+</button>
+            <button class="interest-btn" data-id="{{ post.id }}" data-action="decrease">-</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // 찜하기 기능
+    $('.star-btn').click(function() {
+        const postId = $(this).data('id');
+        const button = $(this);
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "idea:toggle_star" %}',
+            data: {
+                'post_id': postId,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                if (response.starred) {
+                    button.text('★');
+                } else {
+                    button.text('☆');
+                }
+            }
+        });
+    });
+
+    // 관심도 조절 기능
+    $('.interest-btn').click(function() {
+        const postId = $(this).data('id');
+        const action = $(this).data('action');
+        const interestSpan = $(this).closest('.post').find('.interest');
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "idea:change_interest" %}',
+            data: {
+                'post_id': postId,
+                'action': action,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                interestSpan.text(response.interest);
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+
+
+
+

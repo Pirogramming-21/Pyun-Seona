@@ -1,0 +1,185 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.devtool-detail {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.devtool-header {
+    margin-bottom: 20px;
+}
+
+.devtool-header h3 {
+    color: #444;
+    font-size: 24px;
+    margin: 0;
+}
+
+.devtool-header p {
+    color: #888;
+    font-size: 16px;
+    margin: 0;
+}
+
+.devtool-content p {
+    color: #666;
+    font-size: 18px;
+}
+
+.actions {
+    text-align: center;
+}
+
+.actions .btn {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.actions .btn-primary {
+    background-color: #007bff;
+}
+
+.actions .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.actions .btn-secondary {
+    background-color: #6c757d;
+}
+
+.actions .btn-secondary:hover {
+    background-color: #565e64;
+}
+
+.actions .btn-danger {
+    background-color: #dc3545;
+}
+/* styles.css continued */
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+.related-posts {
+    margin-top: 20px;
+}
+
+.related-posts h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.related-posts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.related-posts li {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.related-posts li a {
+    font-size: 18px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.related-posts li a:hover {
+    text-decoration: underline;
+}
+
+.related-posts li p {
+    margin: 5px 0;
+    color: #666;
+}
+
+
+</style>
+<div class="container">
+    <h2>DevTool Detail</h2>
+    <p>개발툴 세부내용 페이지입니다. 자신이 사용하는 개발툴에 대한 상세내용을 확인해 보세요.</p>
+    <div class="devtool-detail">
+        <div class="devtool-header">
+            <h3>{{ devtool.name }}</h3>
+            <p>{{ devtool.kind }}</p>
+        </div>
+        <div class="devtool-content">
+            <p>{{ devtool.content }}</p>
+        </div>
+    </div>
+    <div class="related-posts">
+        <h3>만들 수 있는 SW 목록</h3>
+        <ul>
+            {% for post in related_posts %}
+            <li>
+                <a href="{% url 'idea:detail' post.pk %}">{{ post.title }}</a>
+                <p>예상 개발 툴: {{ post.devtool }}</p>
+                <p>아이디어 관심도: + {{ post.interest }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="actions">
+        <a href="{% url 'idea:devtool_list' %}" class="btn btn-primary">목록</a>
+        <a href="{% url 'idea:update_devtool' devtool.pk %}" class="btn btn-secondary">수정</a>
+        <form action="{% url 'idea:delete_devtool' devtool.pk %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">삭제</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
