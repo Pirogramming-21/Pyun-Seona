@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirostagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #3897f0;
+        }
+        .post-form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .post {
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .post img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .like-btn, .comment-btn {
+            background-color: #3897f0;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .comment {
+            margin-top: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #3897f0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pirostagram</h1>
+    
+    <!-- 게시글 작성 폼 -->
+    <div id="post-form">
+        <h2>새 게시글 작성</h2>
+        <form onsubmit="createPost(event)">
+            <input type="file" name="image" accept="image/*" required>
+            <textarea name="caption" required placeholder="게시글 내용을 입력하세요"></textarea>
+            <button type="submit">게시</button>
+        </form>
+    </div>
+
+    <!-- 게시글 목록 -->
+    <div id="posts-container">
+        {% for post in posts %}
+        <div class="post" data-post-id="{{ post.id }}">
+            <img src="{{ post.image.url }}" alt="Post image">
+            <p>{{ post.caption }}</p>
+            <button class="like-btn" onclick="likePost({{ post.id }})">
+                Like (<span class="likes-count">{{ post.likes.count }}</span>)
+            </button>
+            <div class="comments">
+                {% for comment in post.comments.all %}
+                <div class="comment" data-comment-id="{{ comment.id }}">
+                    <span>{{ comment.user.username }}: {{ comment.text }}</span>
+                    {% if comment.user == request.user %}
+                    <button onclick="deleteComment({{ comment.id }})">Delete</button>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <form onsubmit="addComment(event, {{ post.id }})">
+                <input type="text" name="comment" required>
+                <button type="submit">Add Comment</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+
+    function createPost(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/post/create/', true);
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                const postsContainer = document.getElementById('posts-container');
+                const newPost = document.createElement('div');
+                newPost.classList.add('post');
+                newPost.setAttribute('data-post-id', response.post_id);
+                newPost.innerHTML = `
+                    <img src="${response.image_url}" alt="Post image">
+                    <p>${response.caption}</p>
+                    <button class="like-btn" onclick="likePost(${response.post_id})">
+                        Like (<span class="likes-count">0</span>)
+                    </button>
+                    <div class="comments"></div>
+                    <form onsubmit="addComment(event, ${response.post_id})">
+                        <input type="text" name="comment" required>
+                        <button type="submit">Add Comment</button>
+                    </form>
+                `;
+                postsContainer.insertBefore(newPost, postsContainer.firstChild);
+                form.reset();
+            }
+        };
+        xhr.send(formData);
+    }
+
+    function likePost(postId) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/like/', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                const likesCount = document.querySelector(`.post[data-post-id="${postId}"] .likes-count`);
+                likesCount.textContent = response.likes_count;
+            }
+        };
+        xhr.send(`post_id=${postId}`);
+    }
+
+    function addComment(event, postId) {
+        event.preventDefault();
+        const form = event.target;
+        const commentText = form.comment.value;
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/comment/add/', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                const commentsDiv = document.querySelector(`.post[data-post-id="${postId}"] .comments`);
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment');
+                newComment.setAttribute('data-comment-id', response.comment_id);
+                newComment.innerHTML = `
+                    <span>${response.user}: ${response.text}</span>
+                    <button onclick="deleteComment(${response.comment_id})">Delete</button>
+                `;
+                commentsDiv.appendChild(newComment);
+                form.reset();
+            }
+        };
+        xhr.send(`post_id=${postId}&text=${encodeURIComponent(commentText)}`);
+    }
+
+    function deleteComment(commentId) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/comment/delete/', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const commentElement = document.querySelector(`.comment[data-comment-id="${commentId}"]`);
+                if (commentElement) {
+                    commentElement.remove();
+                }
+            }
+        };
+        xhr.send(`comment_id=${commentId}`);
+    }
+    </script>
+</body>
+</html>
